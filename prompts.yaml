@@ -129,3 +129,13 @@ diagram_generation:
     - Professional color scheme
     - High resolution (2048x2048)
     - Include legend if applicable
+
+diagram_redraw:
+  model: "gemini-3-pro-image-preview"
+  template: |
+    Redraw the plot on {theme} theme.
+
+    Context:
+    {ocr_text}
+
+    Maintain the structure and key elements of the original handwritten diagram but render it in a clean, professional digital style.
