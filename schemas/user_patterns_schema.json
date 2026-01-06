@@ -1,0 +1,39 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "UserHandwritingPatterns",
+  "type": "object",
+  "properties": {
+    "user_id": {"type": "string", "format": "uuid"},
+    "created_at": {"type": "string", "format": "date-time"},
+    "last_updated": {"type": "string", "format": "date-time"},
+    "calibration_count": {"type": "integer", "minimum": 0},
+    "baseline_accuracy": {"type": "number", "minimum": 0, "maximum": 100},
+    "current_accuracy": {"type": "number", "minimum": 0, "maximum": 100},
+    "confusion_matrix": {
+      "type": "object",
+      "patternProperties": {
+        "^[а-яА-Яa-zA-Z]→[а-яА-Яa-zA-Z]+$": {"type": "integer", "minimum": 1}
+      },
+      "additionalProperties": false
+    },
+    "problem_characters": {
+      "type": "array",
+      "items": {"type": "string", "maxLength": 1}
+    },
+    "accuracy_history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "date": {"type": "string", "format": "date"},
+          "accuracy": {"type": "number"}
+        }
+      }
+    },
+    "language_preferences": {
+      "type": "array",
+      "items": {"type": "string", "enum": ["en", "it", "ru"]}
+    }
+  },
+  "required": ["user_id", "confusion_matrix", "current_accuracy"]
+}

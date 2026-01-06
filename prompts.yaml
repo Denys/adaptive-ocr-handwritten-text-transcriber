@@ -1,0 +1,131 @@
+# Gemini Prompt Templates
+# Version: 1.0
+
+ocr_baseline:
+  model: "gemini-2.5-flash-001"
+  template: |
+    Create digital transcription of the text. Preserve line breaks and paragraph structure.
+
+ocr_personalized:
+  model: "gemini-2.5-flash-001"  # Or gemini-3-flash-preview if accuracy < 85%
+  template: |
+    Create digital transcription of the text. Preserve line breaks.
+
+    USER HANDWRITING PATTERNS (apply when uncertain):
+    {user_patterns}
+
+    When encountering ambiguous characters, prioritize these learned patterns.
+
+calibration_analysis:
+  model: "gemini-2.5-flash-001"
+  tools: ["code_execution"]
+  template: |
+    Analyze character-level OCR errors to build confusion matrix:
+
+    Ground Truth: "{ground_truth}"
+    OCR Output: "{ocr_output}"
+    User Corrections: {corrections}
+
+    Write Python code to:
+    1. Calculate Levenshtein distance for accuracy
+    2. Build confusion matrix: {{(char_written, char_recognized): frequency}}
+    3. Identify top 10 problem characters sorted by error frequency
+    4. Return JSON schema:
+    {{
+        "accuracy": float (0-100),
+        "confusion_matrix": {{
+            "a→o": 3,
+            "e→c": 2,
+            "д→g": 5
+        }},
+        "problem_chars": ["д", "a", "e"],
+        "total_errors": int
+    }}
+
+summarization:
+  model: "gemini-2.5-flash-001"
+  template: |
+    Summarize the following handwritten note content concisely (max 3 sentences):
+
+    {ocr_text}
+
+    Focus on: Main topic, key action items, important entities (names, dates, numbers).
+
+concept_explanation:
+  model: "gemini-3-flash-preview"
+  tools: ["google_search"]
+  template: |
+    Identify technical or medical terms in this text:
+
+    {ocr_text}
+
+    For each term:
+    1. Determine if it's domain-specific (medical, engineering, etc.)
+    2. Use google_search tool to find authoritative definition
+    3. Return concise explanation (max 2 sentences per term)
+
+    Return JSON:
+    {{
+      "terms": [
+        {{"term": "string", "definition": "string", "language": "en|it|ru", "source": "url"}}
+      ]
+    }}
+
+layout_analysis:
+  model: "gemini-3-pro-preview"
+  template: |
+    Analyze this document and extract both content and layout structure.
+
+    Return JSON:
+    {
+      "text": "full OCR text",
+      "layout": {
+        "sections": [
+          {
+            "level": 1,  // 1=header, 2=subheader, 3=body
+            "title": "string",
+            "content": "string",
+            "style": {
+              "bold": bool,
+              "italic": bool,
+              "alignment": "left|center|right"
+            },
+            "position": {"x": int, "y": int, "width": int, "height": int}
+          }
+        ],
+        "structure_type": "notes|letter|form|list|menu"
+      }
+    }
+
+diagram_classification:
+  model: "gemini-3-flash-preview"
+  template: |
+    Classify this diagram into one of the following types:
+
+    Options:
+    - flowchart (boxes with arrows showing process flow)
+    - kanban (columns with cards: Backlog, In Progress, Complete)
+    - plot_graph (X/Y axes with data points or lines)
+    - timeline (horizontal/vertical line with dated events)
+    - schematic (circuit diagram, technical drawing)
+    - mind_map (central concept with branching ideas)
+    - table (rows and columns with data)
+    - organizational_chart (hierarchy of positions)
+
+    Return JSON:
+    {
+      "type": "string (one of the options above)",
+      "confidence": float (0-1),
+      "elements_detected": ["arrows", "text_labels", "axes", ...]
+    }
+
+diagram_generation:
+  model: "gemini-3-pro-image-preview"
+  template: |
+    Generate a {description} diagram.
+
+    Requirements:
+    - Clear, legible text labels
+    - Professional color scheme
+    - High resolution (2048x2048)
+    - Include legend if applicable

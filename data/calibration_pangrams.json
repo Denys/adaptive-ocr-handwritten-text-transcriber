@@ -1,0 +1,21 @@
+{
+  "english": [
+    "The quick brown fox jumps over the lazy dog.",
+    "Sphinx of black quartz, judge my vow.",
+    "Pack my box with five dozen liquor jugs."
+  ],
+  "italian": [
+    "Quel fez sghembo copre davanti.",
+    "Ch'io beva del whisky o del rhum, qualche signorina senz'altro mi chiederà mille lire."
+  ],
+  "russian": [
+    "В чащах юга жил бы цитрус? Да, но фальшивый экземпляр!",
+    "Съешь же ещё этих мягких французских булок да выпей чаю."
+  ],
+  "total_words": 150,
+  "character_coverage": {
+    "english": ["a-z", "A-Z", "common digraphs"],
+    "italian": ["accented: à,è,é,ì,ò,ù", "double consonants", "gn,gl,sc"],
+    "russian": ["cyrillic alphabet", "ь,ъ", "ё"]
+  }
+}
