@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menu Reproduction</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap');
+
+    :root {
+        --main-color: #1a2a44; /* Dark blue similar to the image */
+        --bg-color: #fdfbf7; /* Off-white paper color */
+    }
+
+    body {
+        font-family: 'Noto Serif', serif;
+        background-color: var(--bg-color);
+        color: var(--main-color);
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .menu-container {
+        max-width: 1000px;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    /* Top Section with two columns */
+    .top-section {
+        display: flex;
+        width: 100%;
+        gap: 20px;
+    }
+
+    @media (max-width: 768px) {
+        .top-section {
+            flex-direction: column;
+        }
+        .menu-columns {
+            flex-direction: column;
+        }
+        .menu-col {
+            width: 100% !important;
+        }
+    }
+
+    .panel {
+        flex: 1;
+        border: 2px solid var(--main-color);
+        border-radius: 15px;
+        padding: 15px 25px;
+        position: relative;
+    }
+
+    h1, h2 {
+        font-family: 'Dancing Script', cursive;
+        text-align: center;
+        margin-top: 0;
+        margin-bottom: 20px;
+        font-weight: 700;
+    }
+
+    h1 { font-size: 2.8em; }
+    h2 { font-size: 2.5em; }
+
+    .menu-item {
+        margin-bottom: 14px;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+    }
+
+    .item-content {
+        flex: 1;
+        padding-right: 10px;
+    }
+
+    .item-title {
+        font-weight: 700;
+        font-size: 1.05em;
+        margin-bottom: 2px;
+        display: block;
+    }
+
+    .item-desc {
+        font-size: 0.85em;
+        font-style: italic;
+        color: #333;
+        line-height: 1.3;
+        display: block;
+    }
+
+    .item-price {
+        font-weight: 700;
+        font-size: 1.05em;
+        white-space: nowrap;
+    }
+
+    .sub-price {
+        text-align: right;
+        font-size: 0.9em;
+        margin-top: -10px;
+        margin-bottom: 15px;
+        display: block;
+    }
+
+    /* Bottom Section */
+    .bottom-panel {
+        width: 100%;
+        border: 2px solid var(--main-color);
+        border-radius: 15px;
+        padding: 15px 25px;
+    }
+
+    .menu-columns {
+        display: flex;
+        gap: 40px;
+    }
+
+    .menu-col {
+        width: 50%;
+    }
+
+    .course-title {
+        text-align: center;
+        font-weight: 700;
+        font-size: 1.1em;
+        margin-bottom: 20px;
+        color: var(--main-color);
+        line-height: 1.2;
+    }
+
+    .center-item {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .center-item .item-title { font-size: 1.1em; }
+
+    .footer-dessert {
+        text-align: center;
+        margin-top: 30px;
+        padding-top: 15px;
+        border-top: 1px solid rgba(26, 42, 68, 0.2);
+    }
+    
+    .footer-title {
+        font-weight: 700;
+        font-size: 1.1em;
+        margin-bottom: 5px;
+    }
+
+</style>
+</head>
+<body>
+
+<div class="menu-container">
+
+    <div class="top-section">
+        <div class="panel">
+            <h2>Notre Cuisine Marine</h2>
+
+            <div class="menu-item">
+                <div class="item-content">
+                    <span class="item-title">Friture du jour selon arrivage</span>
+                    <span class="item-desc">Fry of the day<br>Fritto del giorno</span>
+                </div>
+                <div class="item-price">21,00 €</div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-content">
+                    <span class="item-title">Daurade à la Plancha</span>
+                    <span class="item-desc">Grilled Sea Bream<br>Orata alla Griglia</span>
+                </div>
+                <div class="item-price">29,00 €</div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-content">
+                    <span class="item-title">Espadon a la plancha</span>
+                    <span class="item-desc">Grilled Swordfish<br>Pesce spada alla griglia</span>
+                </div>
+                <div class="item-price">27,00 €</div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-content">
+                    <span class="item-title">Pavé de Saumon à la Plancha</span>
+                    <span class="item-desc">Grilled Salmon<br>Salmon alla Griglia</span>
+                </div>
+                <div class="item-price">27,00 €</div>
+            </div>
+            <div class="sub-price">Pour les enfants &nbsp; 14,00 €</div>
+
+            <div class="menu-item">
+                <div class="item-content">
+                    <span class="item-title">Parillade mixte de poissons grillés Elevage Frais</span>
+                    <span class="item-desc">Mixed Grilled Fishes<br>Parillade (misto du pesce alla griglia)</span>
+                </div>
+                <div class="item-price">32,00 €</div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-content">
+                    <span class="item-title">Calamars Frits</span>
+                    <span class="item-desc">Fried Calamari<br>Calamaretti Fritti</span>
+                </div>
+                <div class="item-price">23,00 €</div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-content">
+                    <span class="item-title">Calamars aux Artichauts</span>
+                    <span class="item-desc">Calamari with Artichokes<br>Calamaretti con Carciofi</span>
+                </div>
+                <div class="item-price">32,00 €</div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-content">
+                    <span class="item-title">Morue dessalée à la Niçoise</span>
+                    <span class="item-desc">Morue cuite au four, Poivrons, Câpres, Anchois, Courgettes<br>Cod Fish «à la niçoise»<br>Baccalà alla Nizzarda</span>
+                </div>
+                <div class="item-price">27,00 €</div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-content">
+                    <span class="item-title">Grand Aïoli de la Mer</span>
+                    <span class="item-desc">Morue dessalée, Cuite vapeur, avec ses légumes, Scampis, Bulots et Palourdes Sauce à l'ail<br>Cod Fish «à la niçoise»<br>Baccalà alla Nizzarda</span>
+                </div>
+                <div class="item-price">32,00 €</div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <h2>Nos Viandes</h2>
+
+            <div class="menu-item">
+                <div class="item-content">
+                    <span class="item-title">Daube Niçoise Raviolis Maison</span>
+                    <span class="item-desc">Marinated Beef Stew cooked in Red Wine Sauce with Homemade Ravioli<br>«Daube» Nizzarta con Ravioli</span>
+                </div>
+                <div class="item-price">23,00 €</div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-content">
+                    <span class="item-title">Cœur d'Entrecôte du Chef 300 grs</span>
+                    <span class="item-desc">Chef's Entrecote<br>Bistecca dello Chef</span>
+                </div>
+                <div class="item-price">30,00 €</div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-content">
+                    <span class="item-title">Carré d'Agneau (1 pers.)</span>
+                    <span class="item-desc">Roti au four à bois<br>Roasted Rack of Lamb<br>Nodino d'Agnello</span>
+                </div>
+                <div class="item-price">32,00 €</div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-content">
+                    <span class="item-title">Filet de Bœuf Grillé</span>
+                    <span class="item-desc">Grilled Beef Tenderloin<br>Filetto Di Manzo Alla Griglia</span>
+                </div>
+                <div class="item-price">36,00 €</div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-content">
+                    <span class="item-title">Filet de Bœuf au Poivre</span>
+                    <span class="item-desc">Beef Tenderloin with Pepper Sauce<br>Filetto Di Manzo Al Pepe</span>
+                </div>
+                <div class="item-price">38,00 €</div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-content">
+                    <span class="item-title">Lapin Rôti au Four à Bois</span>
+                    <span class="item-desc">Rabbit Roast in the Wood-stocked Oven<br>Corniglio Arrosto alla Brace</span>
+                </div>
+                <div class="item-price">25,00 €</div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-content">
+                    <span class="item-title">Tripes Niçoises Maison</span>
+                    <span class="item-desc">«Niçoise» Tripe<br>Trippe alla Nizzarda</span>
+                </div>
+                <div class="item-price">22,00 €</div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-content">
+                    <span class="item-title">Porchetta Niçoise Maison</span>
+                    <span class="item-desc">Poitrine de porc farcie et panisse<br>Roasted Stuffed Pork «A la Niçoise»<br>Porchetta alla Nizzarda</span>
+                </div>
+                <div class="item-price">19,00 €</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-panel">
+        <h1>Notre Menu à 35,00€</h1>
+
+        <div class="menu-columns">
+            <div class="menu-col">
+                <div class="course-title">Premier Plat / First Course<br>au choix</div>
+                
+                <div class="center-item">
+                    <span class="item-title">Poivrons Grillés Maison</span>
+                    <span class="item-desc">Homemade Grilled Sweet Peppers, Anchovies and Olive Oil<br>Peperoni Grigliati, Olio di Oliva</span>
+                </div>
+
+                <div class="center-item">
+                    <span class="item-title">Petits Farcis Niçois et Salade</span>
+                    <span class="item-desc">Homemade Stuffed Vegetable «à la Niçoise» and green Salad<br>Piccolo Ripirni Nizzarde e insalata</span>
+                </div>
+
+                <div class="center-item">
+                    <span class="item-title">Salade Niçoise</span>
+                    <span class="item-desc">Tomatoes Salade, Tuna, Anchovies, Celri, Egg and Olives<br>Pomodori, Tonno, Sedano, Uovae Pepperoni</span>
+                </div>
+
+                <div class="center-item">
+                    <span class="item-title">Calamars Frits</span>
+                    <span class="item-desc">Fried Squids<br>Calamaretti Fritti</span>
+                </div>
+            </div>
+
+            <div class="menu-col">
+                <div class="course-title">Second Plat / second Course<br>au choix</div>
+
+                <div class="center-item">
+                    <span class="item-title">Tripes Niçoises Maison</span>
+                    <span class="item-desc">«Niçoise» Tripe<br>Trippe alla Nizzarda</span>
+                </div>
+
+                <div class="center-item">
+                    <span class="item-title">Côtelettes d'Agneau Grillées</span>
+                    <span class="item-desc">Grilled Lamb Cutlets<br>Costatine di Agnello alla Griglia</span>
+                </div>
+
+                <div class="center-item">
+                    <span class="item-title">Saumon au Thym</span>
+                    <span class="item-desc">Salmon with Thymes<br>Salmone e Timo</span>
+                </div>
+
+                <div class="center-item">
+                    <span class="item-title">Daube Provençale</span>
+                    <span class="item-desc">Beef Stew «à la Provençale»<br>«Daube» Nizzarta con Ravioli</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-dessert">
+            <div class="footer-title">Pâtisserie du jour ou Glaces ou Sorbet ou Nougat Glacé Coulis de Framboise</div>
+            <div class="item-desc">Pastry of the day or Arlequin ice cream / Pasticceria fresca or Gelato di due sapore</div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
