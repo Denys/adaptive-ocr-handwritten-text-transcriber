@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
-from src.api.endpoints import ocr
+from src.api.endpoints import ocr, calibration
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -15,6 +15,7 @@ app = FastAPI(
 )
 
 app.include_router(ocr.router, prefix="/api/ocr", tags=["ocr"])
+app.include_router(calibration.router, prefix="/api/calibration", tags=["calibration"])
 
 @app.get("/health")
 async def health_check():
